@@ -5,9 +5,13 @@
 
 ### Installation
 ```sh
-git clone https://github.com/datthinh1801/cicflowmeter.git
 cd cicflowmeter
-python3 setup.py install
+sudo make install
+```
+
+### Uninstall
+```sh
+sudo make uninstall
 ```
 
 ### Usage
@@ -24,16 +28,5 @@ optional arguments:
   -c, --csv, --flow     output flows as csv
 ```
 
-Convert pcap file to flow csv:
-
-```
-cicflowmeter -f example.pcap -c flows.csv
-```
-
-Sniff packets real-time from interface to flow csv: (**need root permission**)
-
-```
-cicflowmeter -i eth0 -c flows.csv
-```
 
 - Reference: https://www.unb.ca/cic/research/applications.html#CICFlowMeter
