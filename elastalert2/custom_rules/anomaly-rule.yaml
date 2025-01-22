@@ -1,0 +1,26 @@
+# From examples/rules/example_frequency.yaml
+es_host: localhost
+es_port: 9200
+
+name: Anomaly Alert
+type: frequency
+
+index: anomaly-log*
+
+num_events: 150
+
+timeframe:
+  seconds: 5
+
+filter:
+- terms:
+    label.keyword:
+      - "Anomaly"
+      
+alert:
+  - "command"
+  
+command:
+  - "/home/ajril/Skripsi/Tools/elastalert2/block.sh"
+  - "{src_ip}"
+  - "{dst_ip}"

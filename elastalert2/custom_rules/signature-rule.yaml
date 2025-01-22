@@ -1,0 +1,28 @@
+# From examples/rules/example_frequency.yaml
+es_host: localhost
+es_port: 9200
+
+name: Signature Alert
+type: frequency
+
+index: signature-log*
+
+num_events: 1
+
+timeframe:
+  seconds: 1
+
+filter:
+- terms:
+    alert.signature.keyword:
+      - "SSH Brute Force Attempt"
+      - "ICMP Flood Detected"
+      - "FTP Brute Force Detected"
+      
+alert:
+  - "command"
+  
+command:
+  - "/home/ajril/Skripsi/Tools/elastalert2/block.sh"
+  - "{src_ip}"
+  - "{dest_ip}"
